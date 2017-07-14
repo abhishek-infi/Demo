@@ -10,6 +10,9 @@ import org.apache.bcel.generic.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Custom_Actions extends start {
 	
@@ -74,22 +77,13 @@ public class Custom_Actions extends start {
 	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 	  custom_actions.asset_category(driver).click();
 	 
+	 // Clickable element is remaining
 	  
-	  WebElement element = driver.findElement(By.id("Country"));
-	  Select oSelect = new Select(element);
-
-	  //Or it can be also written as
-
-	  //Select oSelect = new Select(driver.findElement(By.id("Country")));
-	  
-	  
-	  
-	  
-	  
-	/*  // Option COMPUTE
+	 
+	  // Option COMPUTE
 	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	  custom_actions.COMPUTE(driver).click();
-	  */
+	  
 	  
 	  // Select Asset Type 
 	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
