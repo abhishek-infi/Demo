@@ -3,14 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Demo.Add_Provider">
+      <class name="Demo.Custom_Actions">
         <methods>
-          <include name="Provider"/>
+          <include name="create_custom_action"/>
+          <include name="signin"/>
           <include name="setupApplication"/>
-          <include name="ending"/>
+          <include name="afterTest"/>
           <include name="closeApplication"/>
         </methods>
-      </class> <!-- Demo.Add_Provider -->
+      </class> <!-- Demo.Custom_Actions -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -1,7 +1,10 @@
 package Demo;
 
+import java.util.concurrent.TimeUnit;
+
 import org.testng.annotations.Test;
-import org.openqa.selenium.By;
+
+import Pages.login;
 
 public class Login extends start {
 	
@@ -21,21 +24,21 @@ public class Login extends start {
 
     
     @Test (description="signin")
-    public void signin(){     
-    	 
-			 // To Locate the Username field
-			    	 
-			driver.findElement(By.id("username")).sendKeys("admin");
+    public void signin(){ 
+    	
+    	
+    	
+            // Enter Username	
+    	    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS); 	 
+			login.Username(driver).sendKeys("admin");
 			
+			// Enter Password
+			driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+			login.Password(driver).sendKeys("admin123");
 			
-			// To locate the Password field
-			
-			driver.findElement(By.id("password")).sendKeys("admin123");
-			
-			
-			// Click on Login button
-			
-			driver.findElement(By.id("submit")).click();
+			// Click on SignIn button
+			driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+			login.Submit_button(driver).click();
 			
 			
 

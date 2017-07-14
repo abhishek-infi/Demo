@@ -3,11 +3,11 @@ package Demo;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
+import Pages.add_provider;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class Add_Provider extends start {
@@ -40,65 +40,56 @@ public class Add_Provider extends start {
 	@Test(description = "add provider", dependsOnMethods={"signin"})
 
 	private void Provider() throws Exception {
-
-        
-		// Click on 'Provider' option.
 		
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("html/body/div[1]/aside[1]/div/nav/ul/li[5]/a"))).click();
-			
 		
-	    // Click on 'Create New' button.
-	    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("createProvider")).click();
-
-		// Select VMware Provider
+		// Click on Provider option from Add Provider.
 		 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.xpath(".//*[@id='createProvider']/div/div/div/div/div[2]/div[3]/div/div/div[2]/div/p/a"))
-				.click();
-
-		// Enter VMware Provider Name
-		 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("vmware_provider_name")).sendKeys("VMware55 Infiverve");
-
-		// Description
-		 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("vmware_provider_description")).sendKeys("VMware_55_Testing");
-
-		// VMware URL
-		 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("vmware_provider_hostname")).sendKeys("vmware55.infiverve.com:5443");
-
-		// Enter Username
-		 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("vmware_provider_username")).sendKeys("root");
-
-		// Enter Password
-		 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("provider_password")).sendKeys("vmware");
-
-		// Click on Register Button
-
-		 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		 driver.findElement(By.xpath(".//*[@id='vmwareForm']/div[4]/div[2]/button[1]")).click();
-		
-		 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		
-
-	}
-	
-	  
-	  
-	  
+         add_provider.Provider(driver).click();
+         
+         //Click on Create_New button 
+         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+         add_provider.Create_New(driver).click();
+         
+         // Click on VMware Provider Option
+         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+         add_provider.VMware(driver).click();
+         
+         
+         // Enter VMware Name
+         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+         add_provider.Provider_name(driver).sendKeys("VMware_Demo");
+         
+         // Enter Description
+         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+         add_provider.vmware_provider_description(driver).sendKeys("Description");
+         
+         
+         // Enter Hostname
+         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+         add_provider.vmware_provider_hostname(driver).sendKeys("vmware55.infiverve.com:5443");
+         
+         // Enter Provider Username
+         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+         add_provider.vmware_provider_username(driver).sendKeys("root");
+         
+         // Enter Password
+         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+         add_provider.provider_password(driver).sendKeys("vmware");
+         
+         // Click on Register button
+         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+         add_provider.Register_button(driver).click();
+         
+       }
 	 
 	public static void main (String[] args) throws Exception
 	{
 		Add_Provider AP = new Add_Provider();
 		AP.setupApplication();
 	    AP.signin();
-		 synchronized (AP) {
+		 /*synchronized (AP) {
 	            AP.wait(1000);
-	        }
+	        }*/
 		 AP.Provider();
 		
 	}
@@ -106,7 +97,7 @@ public class Add_Provider extends start {
 	@AfterClass
 	public void ending() {
 		
-		driver.quit();
+		//driver.quit();
 
 	}
 

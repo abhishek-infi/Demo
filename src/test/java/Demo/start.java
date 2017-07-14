@@ -30,7 +30,7 @@ public WebDriver driver;
 	@AfterClass
 	public void closeApplication()
 	{
-		driver.quit();
+	//	driver.quit();
 		
 	}
 }
