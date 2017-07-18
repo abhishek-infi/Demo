@@ -6,17 +6,12 @@ import Pages.custom_actions;
 
 import java.util.concurrent.TimeUnit;
 
-import org.apache.bcel.generic.Select;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Custom_Actions extends start {
 	
-	String driverPath = "/usr/local/bin/geckodriver";
+	String driverPath = "D:\\geckodriver-v0.16.1-win64\\geckodriver.exe";
 	
 
 

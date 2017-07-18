@@ -12,7 +12,7 @@ import org.openqa.selenium.By;
 
 public class Add_Provider extends start {
 
-	String driverPath = "/usr/local/bin/geckodriver";
+	String driverPath = "D:\\geckodriver-v0.16.1-win64\\geckodriver.exe";
 	
 
 

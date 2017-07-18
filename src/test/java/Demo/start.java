@@ -2,6 +2,7 @@ package Demo;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -16,13 +17,19 @@ public WebDriver driver;
 		
 		
 		//System.out.println("--------Driver----------"+driver.getClass());
-                driver=new FirefoxDriver();
-	
-		driver.manage().window().maximize();
 		
-		driver.get("http://swoop.infiverve.com");
+		        final FirefoxProfile firefoxProfile = new FirefoxProfile();
+	            firefoxProfile.setPreference("xpinstall.signatures.required", false);
+	            driver = new FirefoxDriver(firefoxProfile);
+	            driver.get("http://swoop.infiverve.com");
+                System.setProperty("webdriver.gecko.driver", "D:\\geckodriver-v0.16.1-win64");
+                System.setProperty("webdriver.firefox.bin", "C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+		        driver.manage().window().maximize();
 		
 		
+		
+		
+        
 		
 	}
 	
