@@ -57,7 +57,7 @@ public class Add_Provider extends start {
          
          // Enter VMware Name
          driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.Provider_name(driver).sendKeys("VMware_Demo");
+         add_provider.Provider_name(driver).sendKeys("VMware_Demotest");
          
          // Enter Description
          driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -87,10 +87,7 @@ public class Add_Provider extends start {
 		Add_Provider AP = new Add_Provider();
 		AP.setupApplication();
 	    AP.signin();
-		 /*synchronized (AP) {
-	            AP.wait(1000);
-	        }*/
-		 AP.Provider();
+		AP.Provider();
 		
 	}
 
