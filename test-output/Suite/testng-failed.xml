@@ -3,14 +3,6 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <test name="add_provider(failed)">
     <classes>
-      <class name="Demo.Login">
-        <methods>
-          <include name="setupApplication"/>
-          <include name="ending"/>
-          <include name="closeApplication"/>
-          <include name="signin"/>
-        </methods>
-      </class> <!-- Demo.Login -->
       <class name="Demo.Add_Provider">
         <methods>
           <include name="Provider"/>

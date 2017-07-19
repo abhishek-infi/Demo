@@ -1,22 +1,27 @@
 package Demo;
 
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import Pages.add_provider;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 
 
 public class Add_Provider extends start {
 
-	String driverPath = "D:\\geckodriver-v0.16.1-win64\\geckodriver.exe";
-	
 
-
-	  @Test (description="signin")
+	@BeforeClass
+	public void starting()
+	{
+		
+		
+	System.out.println("Lets Begun!!");
+		
+	}
+	    @Test (description="SignIn")
 	    public void signin() throws Exception {     
 	    	 
 				 // To Locate the Username field
@@ -82,7 +87,7 @@ public class Add_Provider extends start {
          
        }
 	 
-	public static void main (String[] args) throws Exception
+	public static void main () throws Exception
 	{
 		Add_Provider AP = new Add_Provider();
 		AP.setupApplication();

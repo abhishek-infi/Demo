@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-
-  <test name="login">
-    <classes>
-     <class name="Login_Process.Login"/>
-    </classes>
-  </test>
-  <test name="add_provider">
-    <classes>
-      <class name="Demo.Add_Provider"/>
-      <class name="Demo.Login"/>
-    </classes>
-  </test> 
-  <!-- Test -->
-</suite> <!-- Suite -->
+<suite name="example suite 1" verbose="1" >
+  <test name="Login_Process" >
+   <packages>
+      <package name="Login_Process" />
+      <package name="Demo" />
+      
+      </packages>   
+ </test>
+</suite>
