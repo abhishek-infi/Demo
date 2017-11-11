@@ -2,8 +2,7 @@ package Demo;
 
 import org.testng.annotations.Test;
 
-import Pages.custom_actions;
-
+import Pages.custom_actions_page;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -15,7 +14,7 @@ public class Custom_Actions extends start {
 	
 
 
-	  @Test (description="signin")
+	  @Test ()
 	    public void signin() throws Exception {     
 	    	 
 				 // To Locate the Username field
@@ -34,74 +33,54 @@ public class Custom_Actions extends start {
 
 	 }
 	
-  @Test (description = "create custom action", dependsOnMethods={"signin"})
+  @Test (dependsOnMethods={"signin"})
   public void create_custom_action() {
 	   
 	  
-	  // Click on Menu on right side of page
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.Menu(driver).click();
+	  new custom_actions_page(driver)
+	  .submit();
 	  
 	  
-	  // Click on ADMINISTRATION module
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.Administration(driver).click();
+	  new custom_actions_page(driver)
+	  .admin();
 	  
 	  
-	  //Click on Custom Action option
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.Custom_Action(driver).click();
-	 
-	  // Click on Create New button 
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.Create_New_Button(driver).click();
-	  
-	  // Enter value in Identifier field
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.identifier(driver).sendKeys("start");
-	  
-	  // Enter value in Name field
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.name(driver).sendKeys("Start");
-	  
-	  // Eneter value in Description field
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.action_description(driver).sendKeys("Testing");
-	  
-	  // Select Aseet Categoty 
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.asset_category(driver).click();
-	 
-	 // Clickable element is remaining
+	  new custom_actions_page(driver)
+	  .custom_ac();
 	  
 	 
-	  // Option COMPUTE
-	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	  custom_actions.COMPUTE(driver).click();
+	  new custom_actions_page(driver)
+	  .createnew();
 	  
 	  
-	  // Select Asset Type 
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.asset_type(driver).click();
-	 /* 
-	  // Select VIRTUAL MACHINE option
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.VIRTUAL_MACHINE(driver).click();
-	  */
+	  new custom_actions_page(driver)
+	  .nameAs("name")
+	  .descriptionAs("description");
 	  
-	  // Select Asset Subtype
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.asset_subtype(driver).click();
+	  
+	  new custom_actions_page(driver)
+	  .category();
 	 
-	  // Enter Flintbit 
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.flintbit_name(driver).sendKeys("example:hello.rb");
 	  
-	  // Click on Submit button 
-	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-	  custom_actions.submit_Button(driver).click();
+	  new custom_actions_page(driver)
+	  .assetsubtype();
 	  
-	 }
+	  
+	  new custom_actions_page(driver)
+	  .assettype();
+
+	  
+	  new custom_actions_page(driver)
+	  .flintnameAs("Flintname");
+	  
+	  
+	  new custom_actions_page(driver)
+	  .submit_butto();
+	  
+	  
+	  new custom_actions_page(driver)
+      .Save_Button();
+  }
   
   public static void main (String[] args) throws Exception
   {
@@ -114,6 +93,8 @@ public class Custom_Actions extends start {
    
   @AfterTest
   public void afterTest() {
+	  
+	//  driver.quit();
   }
 
 }

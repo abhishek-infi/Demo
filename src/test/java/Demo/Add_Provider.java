@@ -4,10 +4,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import Pages.add_provider;
+import Pages.add_provider_page;
 
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+
 
 
 public class Add_Provider extends start {
@@ -16,8 +18,7 @@ public class Add_Provider extends start {
 	@BeforeClass
 	public void starting()
 	{
-		
-		
+			
 	System.out.println("Lets Begun!!");
 		
 	}
@@ -37,54 +38,61 @@ public class Add_Provider extends start {
 				// Click on Login button
 				driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 				driver.findElement(By.id("submit")).click();
-
-			
-
 	  }
 	
-	@Test(description = "add provider", dependsOnMethods={"signin"})
+	@Test(dependsOnMethods={"signin"})
 
-	private void Provider() throws Exception {
+	public void Provider() throws Exception {
 		
 		
-		// Click on Provider option from Add Provider.
-		 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.Provider(driver).click();
-         
-         //Click on Create_New button 
-         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.Create_New(driver).click();
-         
-         // Click on VMware Provider Option
-         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.VMware(driver).click();
-         
-         
-         // Enter VMware Name
-         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.Provider_name(driver).sendKeys("VMware_Demotest");
-         
-         // Enter Description
-         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.vmware_provider_description(driver).sendKeys("Description");
-         
-         
-         // Enter Hostname
-         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.vmware_provider_hostname(driver).sendKeys("vmware55.infiverve.com:5443");
-         
-         // Enter Provider Username
-         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.vmware_provider_username(driver).sendKeys("root");
-         
-         // Enter Password
-         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.provider_password(driver).sendKeys("vmware");
-         
-         // Click on Register button
-         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-         add_provider.Register_button(driver).click();
-         
+		new add_provider_page(driver)
+		.Menu();
+		
+		
+		new add_provider_page(driver)
+		.Administration();
+		
+		 
+		new add_provider_page(driver)
+		.Provider();
+		
+		 
+		new add_provider_page(driver)
+		.Create_New();
+		
+		 
+		new add_provider_page(driver)
+		.Type();
+		
+		
+		new add_provider_page(driver)
+		.ProvidernameAs("vmware456");
+		
+		
+		new add_provider_page(driver)
+		.DescriptionAs("testing");
+		
+		
+		new add_provider_page(driver)
+		.hostnameAs("vmware55.infiverve.com:5443");
+		
+		
+		new add_provider_page(driver)
+		.usernameAs("root");
+	
+		
+		new add_provider_page(driver)
+		.PasswordAs("vmware");
+		
+		 
+		new add_provider_page(driver)
+		.Verify_cred();
+		
+		
+		new add_provider_page(driver)
+		.Register_button();
+		
+		
        }
 	 
 	public static void main () throws Exception
