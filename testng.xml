@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="example suite 1" verbose="1" >
-  <test name="Login_Process" >
-   <packages>
-      <package name="Login_Process" />
-      <package name="Demo" />
-      
-      </packages>   
- </test>
-</suite>
+<suite name="Infitest">
+  <test name="Test">
+    <classes>
+      <class name="Demo.Credentials"/>
+      <class name="Login_Process.Login"/>
+      <class name="Demo.Custom_Actions"/>
+      <class name="Demo.Add_Provider"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Infitest -->

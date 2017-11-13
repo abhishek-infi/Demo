@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [example suite 1]">
-  <test name="Login_Process(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="Demo.Custom_Actions">
+      <class name="Demo.Credentials">
         <methods>
-          <include name="create_custom_action"/>
-          <include name="signin"/>
+          <include name="cred"/>
+          <include name="beforeTest"/>
           <include name="setupApplication"/>
+          <include name="signin"/>
+          <include name="closeApplication"/>
           <include name="afterTest"/>
-          <include name="closeApplication"/>
         </methods>
-      </class> <!-- Demo.Custom_Actions -->
-      <class name="Demo.Add_Provider">
-        <methods>
-          <include name="Provider"/>
-          <include name="setupApplication"/>
-          <include name="starting"/>
-          <include name="ending"/>
-          <include name="closeApplication"/>
-          <include name="signin"/>
-        </methods>
-      </class> <!-- Demo.Add_Provider -->
+      </class> <!-- Demo.Credentials -->
     </classes>
-  </test> <!-- Login_Process(failed) -->
-</suite> <!-- Failed suite [example suite 1] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

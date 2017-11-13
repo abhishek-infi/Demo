@@ -2,12 +2,13 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import Demo.start;
 
 public class custom_actions_page extends start {
-	
+
 	WebDriver driver;
-	
+
 	By menu = By.xpath(".//*[@id='step1']/a/em");
 	By Administration = By.xpath(".//*[@id='step2']/span[2]/span/strong");
 	By Custom_action = By.xpath(".//*[@id='navigationbar']/li[4]/a/span");
@@ -21,78 +22,67 @@ public class custom_actions_page extends start {
 	By submit_butto = By.id("submit_action");
 	By save = By.id("update_action_button");
 
-	 public custom_actions_page(WebDriver driver) {
-	        this.driver = driver;
-	    }
-
-		
-	    public void submit()  {
-	    	driver.findElement(menu).click();
-	        
-	    }
-	    public void admin()    {
-	        driver.findElement(Administration).click();
-	       
-	    }
-	    
-	    public void custom_ac (){
-	    	driver.findElement(Custom_action).click();
-	    	
-	    }
-	    
-	    public void createnew(){
-	    	driver.findElement(Create_New).click();
-	    	
-	    }
-	   
-	   
-	    public custom_actions_page nameAs(String Name){
-	    	driver.findElement(name).sendKeys("Logs");
-	    	return this;
-	    }
-	    
-	    public custom_actions_page descriptionAs(String descri){
-	    	driver.findElement(description).sendKeys("testing45646");
-	    	return this;
-	    }
-	    
-	    
-	    public void category(){
-	    	driver.findElement(category).click();
-	    	
-	    }
-	    
-	   
-	    public void assettype(){
-	    	driver.findElement(assettype).click();
-	    	
-	    }
-	   
-	    
-	    public void assetsubtype(){
-	    	driver.findElement(assetsubtype).click();
-	    	
-	    }
-	    
-	    public custom_actions_page flintnameAs(String Flintname){
-	    	driver.findElement(flintname).sendKeys("example:hello.rb");
-	    return this;
-	    	
-	    }
-	    
-	    public void submit_butto(){
-	    	driver.findElement(submit_butto).click();
-	    }
-	    
-	    public void Save_Button(){
-	    	driver.findElement(save).click();
-	    }
-		
+	public custom_actions_page(WebDriver driver) {
+		this.driver = driver;
 	}
-   
-    
-    
-   
-     
- 
 
+	public void submit() {
+		driver.findElement(menu).click();
+
+	}
+
+	public void admin() {
+		driver.findElement(Administration).click();
+
+	}
+
+	public void custom_ac() {
+		driver.findElement(Custom_action).click();
+
+	}
+
+	public void createnew() {
+		driver.findElement(Create_New).click();
+
+	}
+
+	public custom_actions_page nameAs(String Name) {
+		driver.findElement(name).sendKeys(Name);
+		return this;
+	}
+
+	public custom_actions_page descriptionAs(String descri) {
+		driver.findElement(description).sendKeys(descri);
+		return this;
+	}
+
+	public void category() {
+		driver.findElement(category).click();
+
+	}
+
+	public void assettype() {
+		driver.findElement(assettype).click();
+
+	}
+
+	public void assetsubtype() {
+		driver.findElement(assetsubtype).click();
+
+	}
+
+	public custom_actions_page flintnameAs(String Flintname) {
+		driver.findElement(flintname).sendKeys(Flintname);
+		return this;
+
+	}
+
+	public void submit_butto() {
+		driver.findElement(submit_butto).click();
+	}
+
+	public void Save_Button() {
+		driver.findElement(save).click();
+	}
+
+}
