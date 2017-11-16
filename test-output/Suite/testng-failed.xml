@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test name="add_provider(failed)">
+  <test name="Test(failed)">
     <classes>
-      <class name="Demo.Add_Provider">
+      <class name="Demo.Custom_Actions">
         <methods>
-          <include name="Provider"/>
+          <include name="create_custom_action"/>
           <include name="setupApplication"/>
-          <include name="ending"/>
+          <include name="tearDown"/>
           <include name="closeApplication"/>
-          <include name="signin"/>
         </methods>
-      </class> <!-- Demo.Add_Provider -->
+      </class> <!-- Demo.Custom_Actions -->
     </classes>
-  </test> <!-- add_provider(failed) -->
+  </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

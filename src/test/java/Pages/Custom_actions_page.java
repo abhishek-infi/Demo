@@ -3,9 +3,9 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import Demo.start;
+import Demo.Start;
 
-public class custom_actions_page extends start {
+public class Custom_actions_page extends Start {
 
 	WebDriver driver;
 
@@ -22,11 +22,12 @@ public class custom_actions_page extends start {
 	By submit_butto = By.id("submit_action");
 	By save = By.id("update_action_button");
 
-	public custom_actions_page(WebDriver driver) {
+	public Custom_actions_page(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public void submit() {
+	public void submit() throws InterruptedException {
+		Thread.sleep(500);
 		driver.findElement(menu).click();
 
 	}
@@ -46,12 +47,12 @@ public class custom_actions_page extends start {
 
 	}
 
-	public custom_actions_page nameAs(String Name) {
+	public Custom_actions_page nameAs(String Name) {
 		driver.findElement(name).sendKeys(Name);
 		return this;
 	}
 
-	public custom_actions_page descriptionAs(String descri) {
+	public Custom_actions_page descriptionAs(String descri) {
 		driver.findElement(description).sendKeys(descri);
 		return this;
 	}
@@ -71,13 +72,15 @@ public class custom_actions_page extends start {
 
 	}
 
-	public custom_actions_page flintnameAs(String Flintname) {
+	public Custom_actions_page flintnameAs(String Flintname) {
 		driver.findElement(flintname).sendKeys(Flintname);
 		return this;
 
 	}
 
-	public void submit_butto() {
+	public void submit_butto() throws InterruptedException {
+
+		Thread.sleep(500);
 		driver.findElement(submit_butto).click();
 	}
 

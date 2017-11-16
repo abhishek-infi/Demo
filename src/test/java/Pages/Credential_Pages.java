@@ -3,9 +3,9 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import Demo.start;
+import Demo.Start;
 
-public class Credential_Pages extends start {
+public class Credential_Pages extends Start {
 
 	By Menu = By.xpath(".//*[@id='step1']/a/em");
 	By Administration = By.xpath(".//*[@id='step2']/span[2]/span/strong");
@@ -21,7 +21,7 @@ public class Credential_Pages extends start {
 
 	public Credential_Pages(WebDriver driver) throws InterruptedException {
 
-		start.driver = driver;
+		Start.driver = driver;
 
 	}
 

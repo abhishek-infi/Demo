@@ -1,34 +1,32 @@
 package Demo;
 
-import java.util.concurrent.TimeUnit;
+import library.Utility;
 
-import org.openqa.selenium.By;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import Login_Process.LoginPages;
 import Pages.Credential_Pages;
 
-public class Credentials extends start {
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
-	@Test(description = "SignIn")
-	public void signin() throws Exception {
+public class Credentials extends Start {
 
-		// To Locate the Username field
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("username")).sendKeys("admin");
+	ExtentReports report;
+	ExtentTest logger;
 
-		// To locate the Password field
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("password")).sendKeys("admin123");
-
-		// Click on Login button
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("submit")).click();
-	}
-
-	@Test(dependsOnMethods = { "signin" })
+	@Test
 	public void cred() throws Exception {
+
+		report = new ExtentReports("D:/Reports/Report.html");
+
+		logger = report.startTest("Create Credentials");
+
+		new LoginPages(driver).usernameAs("admin").passwordAs("admin123")
+				.submit();
 
 		new Credential_Pages(driver).menu();
 
@@ -50,19 +48,22 @@ public class Credentials extends start {
 
 		new Credential_Pages(driver).Submit();
 
-	}
-
-	@BeforeTest
-	public void beforeTest() {
-
-		System.out.println("Let's Create Credential");
+		logger.log(LogStatus.PASS, "Credential Created Successfully");
 
 	}
 
-	@AfterTest
-	public void afterTest() {
+	@AfterMethod
+	public void tearDown(ITestResult result) {
 
-		// driver.quit();
+		// Here will compare if test is failing then only it will enter into if
+		// condition
+		if (result.getStatus() == ITestResult.FAILURE) {
+
+			Utility.captureScreenshot(driver, "CredentialFail.png");
+
+		}
+		report.endTest(logger);
+		report.flush();
+
 	}
-
 }

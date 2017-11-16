@@ -1,73 +1,72 @@
 package Demo;
 
-import java.util.concurrent.TimeUnit;
+import library.Utility;
 
-import org.openqa.selenium.By;
-import org.testng.annotations.AfterTest;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import Pages.custom_actions_page;
+import Login_Process.LoginPages;
+import Pages.Custom_actions_page;
 
-public class Custom_Actions extends start {
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
+public class Custom_Actions extends Start {
+
+	ExtentReports report;
+	ExtentTest logger;
 	String driverPath = "D:\\geckodriver-v0.16.1-win64\\geckodriver.exe";
 
-	@Test()
-	public void signin() throws Exception {
+	@Test
+	public void create_custom_action() throws InterruptedException {
+		report = new ExtentReports("D:/Reports/Report.html");
 
-		// To Locate the Username field
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("username")).sendKeys("admin");
+		logger = report.startTest("Create Custom Action");
 
-		// To locate the Password field
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("password")).sendKeys("admin123");
+		// Login To Portal
+		new LoginPages(driver).usernameAs("admin").passwordAs("admin123")
+				.submit();
 
-		// Click on Login button
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("submit")).click();
+		new Custom_actions_page(driver).submit();
 
-	}
+		new Custom_actions_page(driver).admin();
 
-	@Test(dependsOnMethods = { "signin" })
-	public void create_custom_action() {
+		new Custom_actions_page(driver).custom_ac();
 
-		new custom_actions_page(driver).submit();
+		new Custom_actions_page(driver).createnew();
 
-		new custom_actions_page(driver).admin();
-
-		new custom_actions_page(driver).custom_ac();
-
-		new custom_actions_page(driver).createnew();
-
-		new custom_actions_page(driver).nameAs("fortesting").descriptionAs(
+		new Custom_actions_page(driver).nameAs("fortesting").descriptionAs(
 				"description");
 
-		new custom_actions_page(driver).category();
+		new Custom_actions_page(driver).category();
 
-		new custom_actions_page(driver).assetsubtype();
+		new Custom_actions_page(driver).assetsubtype();
 
-		new custom_actions_page(driver).assettype();
+		new Custom_actions_page(driver).assettype();
 
-		new custom_actions_page(driver).flintnameAs("hello:example.rb");
+		new Custom_actions_page(driver).flintnameAs("hello:example.rb");
 
-		new custom_actions_page(driver).submit_butto();
+		new Custom_actions_page(driver).submit_butto();
 
-		new custom_actions_page(driver).Save_Button();
+		new Custom_actions_page(driver).Save_Button();
+
+		logger.log(LogStatus.PASS, "Custom Action Created Successfully");
 	}
 
-	public static void main(String[] args) throws Exception {
-		Custom_Actions CS = new Custom_Actions();
+	@AfterMethod()
+	public void tearDown(ITestResult result) {
 
-		CS.signin();
-		CS.create_custom_action();
+		// Here will compare if test is failing then only it will enter into if
+		// condition
+		if (ITestResult.FAILURE == result.getStatus()) {
+
+			Utility.captureScreenshot(driver, "CustomActionFail.png");
+		}
+
+		report.endTest(logger);
+		report.flush();
 
 	}
-
-	@AfterTest
-	public void afterTest() {
-
-		// driver.quit();
-	}
-
 }

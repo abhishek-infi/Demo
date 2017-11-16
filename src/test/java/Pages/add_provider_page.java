@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import Demo.start;
+import Demo.Start;
 
-public class add_provider_page extends start {
+public class add_provider_page extends Start {
 
 	By Menu = By.xpath(".//*[@id='step1']/a/em");
 	By Administration = By.xpath(".//*[@id='step2']/span[2]/span/strong");
@@ -27,7 +27,7 @@ public class add_provider_page extends start {
 
 	public add_provider_page(WebDriver driver) throws InterruptedException {
 
-		start.driver = driver;
+		Start.driver = driver;
 
 	}
 

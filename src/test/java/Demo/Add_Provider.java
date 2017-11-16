@@ -1,41 +1,33 @@
 package Demo;
 
-import java.util.concurrent.TimeUnit;
+import library.Utility;
 
-import org.openqa.selenium.By;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import Login_Process.LoginPages;
 import Pages.add_provider_page;
 
-public class Add_Provider extends start {
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
-	@BeforeClass
-	public void starting() {
+public class Add_Provider extends Start {
 
-		System.out.println("Lets Begun!!");
+	ExtentReports report;
+	ExtentTest logger;
 
-	}
-
-	@Test(description = "SignIn")
-	public void signin() throws Exception {
-
-		// To Locate the Username field
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("username")).sendKeys("admin");
-
-		// To locate the Password field
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("password")).sendKeys("admin123");
-
-		// Click on Login button
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.findElement(By.id("submit")).click();
-	}
-
-	@Test(dependsOnMethods = { "signin" })
+	@Test
 	public void Provider() throws Exception {
+
+		report = new ExtentReports("D:/Reports/Report.html");
+
+		logger = report.startTest("Add Provider");
+
+		// Login To Portal
+		new LoginPages(driver).usernameAs("admin").passwordAs("admin123")
+				.submit();
 
 		// Click on Menu
 		new add_provider_page(driver).Menu();
@@ -73,21 +65,29 @@ public class Add_Provider extends start {
 		// Click on Register button
 		new add_provider_page(driver).Register_button();
 
-	}
-
-	public static void main() throws Exception {
-		Add_Provider AP = new Add_Provider();
-		AP.setupApplication();
-		AP.signin();
-		AP.Provider();
+		logger.log(LogStatus.PASS, "Provider Created Successfully");
 
 	}
 
-	@AfterClass
-	public void ending() {
+	@AfterMethod
+	public void tearDown(ITestResult result) {
 
-		// driver.quit();
+		// Here will compare if test is failing then only it will enter into if
+		// condition
+		if (ITestResult.FAILURE == result.getStatus()) {
+			try {
+
+				Utility.captureScreenshot(driver, "AddProviderfail.png");
+
+			} catch (Exception e) {
+				System.out.println("Exception while taking screenshot "
+						+ e.getMessage());
+			}
+		}
+
+		report.endTest(logger);
+		report.flush();
+		driver.close();
 
 	}
-
 }

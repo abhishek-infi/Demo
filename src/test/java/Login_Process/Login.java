@@ -1,45 +1,55 @@
 package Login_Process;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import library.Utility;
+
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import Demo.start;
+import Demo.Start;
 
-public class Login extends start {
-	
-  
-  @BeforeClass
-  public void starting()
-  {
-	  System.out.println("Lets Login!!"); 
-  } 
- 
-  @Test (description="signin")
-    public void signin()throws Exception{ 
-	  
-	new LoginPages(driver)
-	  .usernameAs("admin")
-	  .passwordAs("admin123")
-	  .submit();
-	 
-	  
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
-     }
-  public static void main() throws Exception{
-	   	 
-        Login Lg = new Login();
-     	Lg.setupApplication();
-  		Lg.signin();
-  	 
-  }
+public class Login extends Start {
 
-  @AfterClass
-	public void ending() {
-		
-	//	driver.quit();
-		
+	ExtentReports report;
+	ExtentTest logger;
+
+	@Test
+	public void signin() throws Exception {
+
+		report = new ExtentReports("D:/Reports/Report.html");
+
+		logger = report.startTest("Login to the portal");
+
+		new LoginPages(driver).usernameAs("admin").passwordAs("admin123")
+				.submit();
+
+		logger.log(LogStatus.PASS, "Login Successfull");
+
 	}
-     
-     
-     }
+
+	@AfterMethod
+	public void tearDown(ITestResult result) {
+
+		// Here will compare if test is failing then only it will enter into if
+		// condition
+		if (ITestResult.FAILURE == result.getStatus()) {
+			try {
+
+				Utility.captureScreenshot(driver, "Loginfail.png");
+
+			} catch (Exception e) {
+				System.out.println("Exception while taking screenshot "
+						+ e.getMessage());
+			}
+		}
+
+		report.endTest(logger);
+		report.flush();
+		// driver.close();
+	}
+
+}

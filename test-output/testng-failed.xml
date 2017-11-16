@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="Test(failed)">
     <classes>
-      <class name="Demo.Credentials">
+      <class name="Demo.Custom_Actions">
         <methods>
-          <include name="cred"/>
-          <include name="beforeTest"/>
+          <include name="create_custom_action"/>
           <include name="setupApplication"/>
-          <include name="signin"/>
+          <include name="tearDown"/>
           <include name="closeApplication"/>
-          <include name="afterTest"/>
         </methods>
-      </class> <!-- Demo.Credentials -->
+      </class> <!-- Demo.Custom_Actions -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
