@@ -1,12 +1,12 @@
-package Pages;
+package page_object;
+
+import module.Start;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import Demo.Start;
 
 public class add_provider_page extends Start {
 

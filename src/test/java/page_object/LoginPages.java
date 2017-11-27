@@ -1,9 +1,9 @@
-package Login_Process;
+package page_object;
+
+import module.Start;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import Demo.Start;
 
 public class LoginPages extends Start {
 
@@ -11,7 +11,7 @@ public class LoginPages extends Start {
 
 	By username = By.id("username");
 	By password = By.id("password");
-	By Submit_Button = By.id("submit");
+	By Submit_Button = By.id("submi");
 
 	public LoginPages(WebDriver driver) {
 		this.driver = driver;

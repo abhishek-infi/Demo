@@ -3,14 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Demo.Custom_Actions">
+      <class name="Login_Process.Login">
         <methods>
-          <include name="create_custom_action"/>
-          <include name="setupApplication"/>
           <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="generate"/>
+          <include name="setupApplication"/>
+          <include name="signin"/>
+          <include name="getResult"/>
           <include name="closeApplication"/>
         </methods>
-      </class> <!-- Demo.Custom_Actions -->
+      </class> <!-- Login_Process.Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

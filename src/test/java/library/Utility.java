@@ -1,6 +1,7 @@
 package library;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -8,21 +9,21 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 public class Utility {
-	public static void captureScreenshot(WebDriver driver, String screenshotName) {
+	public static String captureScreenshot(WebDriver driver,
+			String screenshotName) throws IOException {
 
-		try {
-			TakesScreenshot ts = (TakesScreenshot) driver;
+		TakesScreenshot ts = (TakesScreenshot) driver;
 
-			File source = ts.getScreenshotAs(OutputType.FILE);
+		File source = ts.getScreenshotAs(OutputType.FILE);
 
-			FileUtils.copyFile(source, new File("D:/Screen/" + screenshotName
-					+ ".png"));
+		// FileUtils.copyFile(source, new File("D://Screen"));
 
-			System.out.println("Screenshot taken");
-		} catch (Exception e) {
+		String destination = System.getProperty("user.dir") + "/Screenshot/"
+				+ screenshotName + ".png";
 
-			System.out.println("Exception while taking screenshot "
-					+ e.getMessage());
-		}
+		File Finaldestination = new File(destination);
+		FileUtils.copyFile(source, Finaldestination);
+		return destination;
+
 	}
 }

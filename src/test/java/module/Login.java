@@ -1,4 +1,4 @@
-package Login_Process;
+package module;
 
 import library.Utility;
 
@@ -6,28 +6,15 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import Demo.Start;
-
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+import page_object.LoginPages;
 
 public class Login extends Start {
 
-	ExtentReports report;
-	ExtentTest logger;
-
 	@Test
 	public void signin() throws Exception {
-
-		report = new ExtentReports("D:/Reports/Report.html");
-
-		logger = report.startTest("Login to the portal");
-
+		test = extent.createTest("Login");
 		new LoginPages(driver).usernameAs("admin").passwordAs("admin123")
 				.submit();
-
-		logger.log(LogStatus.PASS, "Login Successfull");
 
 	}
 
@@ -39,17 +26,17 @@ public class Login extends Start {
 		if (ITestResult.FAILURE == result.getStatus()) {
 			try {
 
-				Utility.captureScreenshot(driver, "Loginfail.png");
+				String screenShotPath = Utility.captureScreenshot(driver,
+						"screenshotName");
+				test.fail("Snapshot below: "
+						+ test.addScreenCaptureFromPath(screenShotPath));
 
 			} catch (Exception e) {
 				System.out.println("Exception while taking screenshot "
 						+ e.getMessage());
+
 			}
 		}
 
-		report.endTest(logger);
-		report.flush();
-		// driver.close();
 	}
-
 }

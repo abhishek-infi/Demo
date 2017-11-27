@@ -1,9 +1,9 @@
-package Pages;
+package page_object;
+
+import module.Start;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import Demo.Start;
 
 public class Custom_actions_page extends Start {
 

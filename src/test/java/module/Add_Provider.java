@@ -1,4 +1,4 @@
-package Demo;
+package module;
 
 import library.Utility;
 
@@ -6,24 +6,15 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import Login_Process.LoginPages;
-import Pages.add_provider_page;
-
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+import page_object.LoginPages;
+import page_object.add_provider_page;
 
 public class Add_Provider extends Start {
-
-	ExtentReports report;
-	ExtentTest logger;
 
 	@Test
 	public void Provider() throws Exception {
 
-		report = new ExtentReports("D:/Reports/Report.html");
-
-		logger = report.startTest("Add Provider");
+		test = extent.createTest("Provider");
 
 		// Login To Portal
 		new LoginPages(driver).usernameAs("admin").passwordAs("admin123")
@@ -50,13 +41,13 @@ public class Add_Provider extends Start {
 		// Enter Description
 		new add_provider_page(driver).DescriptionAs("testing");
 
-		// HostName
+		// Enter HostName
 		new add_provider_page(driver).hostnameAs("vmware55.infiverve.com:5443");
 
 		// Provider Username
 		new add_provider_page(driver).usernameAs("root");
 
-		// Password
+		// Enter Password
 		new add_provider_page(driver).PasswordAs("vmware");
 
 		// Verify Credentials button
@@ -64,8 +55,6 @@ public class Add_Provider extends Start {
 
 		// Click on Register button
 		new add_provider_page(driver).Register_button();
-
-		logger.log(LogStatus.PASS, "Provider Created Successfully");
 
 	}
 
@@ -77,17 +66,16 @@ public class Add_Provider extends Start {
 		if (ITestResult.FAILURE == result.getStatus()) {
 			try {
 
-				Utility.captureScreenshot(driver, "AddProviderfail.png");
+				String screenShotPath = Utility.captureScreenshot(driver,
+						"screenshotName");
+				test.fail("Snapshot below: "
+						+ test.addScreenCaptureFromPath(screenShotPath));
 
 			} catch (Exception e) {
 				System.out.println("Exception while taking screenshot "
 						+ e.getMessage());
 			}
 		}
-
-		report.endTest(logger);
-		report.flush();
-		driver.close();
 
 	}
 }
