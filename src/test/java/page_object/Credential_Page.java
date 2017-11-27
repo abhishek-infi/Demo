@@ -5,7 +5,7 @@ import module.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Credential_Pages extends Start {
+public class Credential_Page extends Start {
 
 	By Menu = By.xpath(".//*[@id='step1']/a/em");
 	By Administration = By.xpath(".//*[@id='step2']/span[2]/span/strong");
@@ -19,7 +19,7 @@ public class Credential_Pages extends Start {
 	By Submit_Button = By
 			.xpath(".//*[@id='usernameandpasswordform']/div[2]/button[1]");
 
-	public Credential_Pages(WebDriver driver) throws InterruptedException {
+	public Credential_Page(WebDriver driver) throws InterruptedException {
 
 		Start.driver = driver;
 
@@ -52,27 +52,27 @@ public class Credential_Pages extends Start {
 		driver.findElement(Type).click();
 	}
 
-	public Credential_Pages nameAs(String name) throws InterruptedException {
+	public Credential_Page nameAs(String name) throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Name).sendKeys(name);
 		return this;
 	}
 
-	public Credential_Pages DescriptionAs(String description)
+	public Credential_Page DescriptionAs(String description)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Description).sendKeys(description);
 		return this;
 	}
 
-	public Credential_Pages usernameAs(String username)
+	public Credential_Page usernameAs(String username)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Username).sendKeys(username);
 		return this;
 	}
 
-	public Credential_Pages PasswordAs(String password)
+	public Credential_Page PasswordAs(String password)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Password).sendKeys(password);

@@ -8,8 +8,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import page_object.Custom_actions_page;
-import page_object.LoginPages;
+import page_object.Custom_Actions_Page;
+import page_object.Login_Page;
 
 public class Custom_Actions extends Start {
 
@@ -18,31 +18,31 @@ public class Custom_Actions extends Start {
 
 		test = extent.createTest("create_custom_action");
 		// Login To Portal
-		new LoginPages(driver).usernameAs("admin").passwordAs("admin123")
+		new Login_Page(driver).usernameAs("admin").passwordAs("admin123")
 				.submit();
 		// Click on Menu
-		new Custom_actions_page(driver).submit();
+		new Custom_Actions_Page(driver).submit();
 		// Click on 'Administration' option
-		new Custom_actions_page(driver).admin();
+		new Custom_Actions_Page(driver).admin();
 		// Click on 'Custom Actions' option
-		new Custom_actions_page(driver).custom_ac();
+		new Custom_Actions_Page(driver).custom_ac();
 		// Click on 'Create New' button
-		new Custom_actions_page(driver).createnew();
+		new Custom_Actions_Page(driver).createnew();
 		// Enter Action Name
-		new Custom_actions_page(driver).nameAs("fortesting").descriptionAs(
+		new Custom_Actions_Page(driver).nameAs("fortesting").descriptionAs(
 				"description");
 		// Select Category
-		new Custom_actions_page(driver).category();
+		new Custom_Actions_Page(driver).category();
 		// Select Asset Sub Type
-		new Custom_actions_page(driver).assetsubtype();
+		new Custom_Actions_Page(driver).assetsubtype();
 		// Select Asset Type
-		new Custom_actions_page(driver).assettype();
+		new Custom_Actions_Page(driver).assettype();
 		// Enter Flintbit
-		new Custom_actions_page(driver).flintnameAs("hello:example.rb");
+		new Custom_Actions_Page(driver).flintnameAs("hello:example.rb");
 		// Click on 'Submit' button
-		new Custom_actions_page(driver).submit_butto();
+		new Custom_Actions_Page(driver).submit_butto();
 		// Click on 'Save' button
-		new Custom_actions_page(driver).Save_Button();
+		new Custom_Actions_Page(driver).Save_Button();
 
 	}
 

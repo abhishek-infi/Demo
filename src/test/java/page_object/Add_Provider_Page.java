@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class add_provider_page extends Start {
+public class Add_Provider_Page extends Start {
 
 	By Menu = By.xpath(".//*[@id='step1']/a/em");
 	By Administration = By.xpath(".//*[@id='step2']/span[2]/span/strong");
@@ -25,7 +25,7 @@ public class add_provider_page extends Start {
 	By Register_button = By
 			.xpath(".//*[@id='vmwareForm']/div[4]/div[2]/button[1]");
 
-	public add_provider_page(WebDriver driver) throws InterruptedException {
+	public Add_Provider_Page(WebDriver driver) throws InterruptedException {
 
 		Start.driver = driver;
 
@@ -59,35 +59,35 @@ public class add_provider_page extends Start {
 
 	}
 
-	public add_provider_page ProvidernameAs(String pname)
+	public Add_Provider_Page ProvidernameAs(String pname)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Provider_name).sendKeys(pname);
 		return this;
 	}
 
-	public add_provider_page DescriptionAs(String description)
+	public Add_Provider_Page DescriptionAs(String description)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Description).sendKeys(description);
 		return this;
 	}
 
-	public add_provider_page hostnameAs(String host)
+	public Add_Provider_Page hostnameAs(String host)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(hostname).sendKeys(host);
 		return this;
 	}
 
-	public add_provider_page usernameAs(String username)
+	public Add_Provider_Page usernameAs(String username)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Username).sendKeys(username);
 		return this;
 	}
 
-	public add_provider_page PasswordAs(String pass)
+	public Add_Provider_Page PasswordAs(String pass)
 			throws InterruptedException {
 		Thread.sleep(500);
 		WebElement element = null;

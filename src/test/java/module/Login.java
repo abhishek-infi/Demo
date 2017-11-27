@@ -6,14 +6,14 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import page_object.LoginPages;
+import page_object.Login_Page;
 
 public class Login extends Start {
 
 	@Test
 	public void signin() throws Exception {
 		test = extent.createTest("Login");
-		new LoginPages(driver).usernameAs("admin").passwordAs("admin123")
+		new Login_Page(driver).usernameAs("admin").passwordAs("admin123")
 				.submit();
 
 	}

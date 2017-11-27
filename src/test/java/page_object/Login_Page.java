@@ -5,7 +5,7 @@ import module.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPages extends Start {
+public class Login_Page extends Start {
 
 	WebDriver driver;
 
@@ -13,16 +13,16 @@ public class LoginPages extends Start {
 	By password = By.id("password");
 	By Submit_Button = By.id("submi");
 
-	public LoginPages(WebDriver driver) {
+	public Login_Page(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public LoginPages usernameAs(String uname) {
+	public Login_Page usernameAs(String uname) {
 		driver.findElement(username).sendKeys(uname);
 		return this;
 	}
 
-	public LoginPages passwordAs(String pass) {
+	public Login_Page passwordAs(String pass) {
 		driver.findElement(password).sendKeys(pass);
 		return this;
 	}

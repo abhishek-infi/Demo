@@ -8,8 +8,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import page_object.Credential_Pages;
-import page_object.LoginPages;
+import page_object.Credential_Page;
+import page_object.Login_Page;
 
 public class Credentials extends Start {
 
@@ -19,28 +19,28 @@ public class Credentials extends Start {
 		test = extent.createTest("cred");
 
 		// Enter the Usernmae and Password on Login Page
-		new LoginPages(driver).usernameAs("admin").passwordAs("admin123")
+		new Login_Page(driver).usernameAs("admin").passwordAs("admin123")
 				.submit();
 		// Click on Menu icon
-		new Credential_Pages(driver).menu();
+		new Credential_Page(driver).menu();
 		// Click on 'Administration' module from Menu
-		new Credential_Pages(driver).administration();
+		new Credential_Page(driver).administration();
 		// Click on 'Credentials' option
-		new Credential_Pages(driver).credential();
+		new Credential_Page(driver).credential();
 		// Clickk on 'Create New' button
-		new Credential_Pages(driver).create_new();
+		new Credential_Page(driver).create_new();
 		// Select Type of Credentials
-		new Credential_Pages(driver).type();
+		new Credential_Page(driver).type();
 		// Click on 'Username & Password' option
-		new Credential_Pages(driver).nameAs("Credential");
+		new Credential_Page(driver).nameAs("Credential");
 		// Enter Description
-		new Credential_Pages(driver).DescriptionAs("Creaet Credential");
+		new Credential_Page(driver).DescriptionAs("Creaet Credential");
 		// Enter Username
-		new Credential_Pages(driver).usernameAs("Admin");
+		new Credential_Page(driver).usernameAs("Admin");
 		// Enter Password
-		new Credential_Pages(driver).PasswordAs("Admin123");
+		new Credential_Page(driver).PasswordAs("Admin123");
 		// Click on Submit button
-		new Credential_Pages(driver).Submit();
+		new Credential_Page(driver).Submit();
 
 	}
 
