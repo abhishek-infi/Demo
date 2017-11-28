@@ -46,6 +46,11 @@ public class Custom_Actions extends Start {
 
 	}
 
+	/*
+	 * The menthod teardown will execute after each method present in class. The
+	 * method contains the Screenshot capture logic if test case get Failed.
+	 */
+
 	@AfterMethod()
 	public void tearDown(ITestResult result) throws IOException {
 

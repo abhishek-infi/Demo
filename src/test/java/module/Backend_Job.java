@@ -14,6 +14,7 @@ import page_object.Backend_Job_Page;
 import page_object.Login_Page;
 
 import com.aventstack.extentreports.ExtentReporter;
+import com.aventstack.extentreports.Status;
 
 public class Backend_Job extends Start {
 
@@ -25,9 +26,12 @@ public class Backend_Job extends Start {
 
 		test = extent.createTest("job");
 
+		test.log(Status.INFO, "Let's Login to Portal");
 		// Login to Portal
 		new Login_Page(driver).usernameAs("admin").passwordAs("admin123")
 				.submit();
+
+		test.log(Status.INFO, "Login Successfull");
 
 		// Click on Menu
 		new Backend_Job_Page(driver).Menu();
@@ -53,7 +57,14 @@ public class Backend_Job extends Start {
 		new Backend_Job_Page(driver).Submit();
 		// If Backend Job Created Successfully then Print the message
 
+		test.log(Status.INFO, "Backend Job Created Successfully");
+
 	}
+
+	/*
+	 * The menthod teardown will execute after each method present in class. The
+	 * method contains the Screenshot capture logic if test case get Failed.
+	 */
 
 	@AfterMethod()
 	public void tearDown(ITestResult result) throws IOException {
@@ -62,6 +73,8 @@ public class Backend_Job extends Start {
 		// condition
 		if (ITestResult.FAILURE == result.getStatus()) {
 
+			test.log(Status.FAIL,
+					"Test Case Failed, Please check the screenshot");
 			String screenShotPath = Utility.captureScreenshot(driver,
 					"screenshotName");
 			test.fail("Snapshot below: "

@@ -6,8 +6,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import page_object.Login_Page;
 import page_object.Add_Provider_Page;
+import page_object.Login_Page;
 
 import com.aventstack.extentreports.Status;
 
@@ -64,6 +64,11 @@ public class Add_Provider extends Start {
 
 	}
 
+	/*
+	 * The menthod teardown will execute after each method present in class. The
+	 * method contains the Screenshot capture logic if test case get Failed.
+	 */
+
 	@AfterMethod
 	public void tearDown(ITestResult result) {
 
@@ -74,8 +79,10 @@ public class Add_Provider extends Start {
 
 				test.log(Status.ERROR,
 						"Test Case Failed, Please check the attachedd screenshot");
+				// Take Screenshot
 				String screenShotPath = Utility.captureScreenshot(driver,
 						"screenshotName");
+				// Save Screenshot in Report
 				test.fail("Snapshot below: "
 						+ test.addScreenCaptureFromPath(screenShotPath));
 

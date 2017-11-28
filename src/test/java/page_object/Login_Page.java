@@ -11,7 +11,7 @@ public class Login_Page extends Start {
 
 	By username = By.id("username");
 	By password = By.id("password");
-	By Submit_Button = By.id("submi");
+	By Submit_Button = By.id("submit");
 
 	public Login_Page(WebDriver driver) {
 		this.driver = driver;

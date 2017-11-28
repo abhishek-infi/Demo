@@ -3,17 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Login_Process.Login">
+      <class name="module.Backend_Config">
         <methods>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
           <include name="generate"/>
+          <include name="Backend_Configuration"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
           <include name="setupApplication"/>
-          <include name="signin"/>
-          <include name="getResult"/>
           <include name="closeApplication"/>
+          <include name="getResult"/>
         </methods>
-      </class> <!-- Login_Process.Login -->
+      </class> <!-- module.Backend_Config -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

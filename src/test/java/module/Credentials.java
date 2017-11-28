@@ -11,6 +11,8 @@ import org.testng.annotations.Test;
 import page_object.Credential_Page;
 import page_object.Login_Page;
 
+import com.aventstack.extentreports.Status;
+
 public class Credentials extends Start {
 
 	@Test
@@ -18,9 +20,12 @@ public class Credentials extends Start {
 
 		test = extent.createTest("cred");
 
+		test.log(Status.INFO, "Let's Login to Portal");
+
 		// Enter the Usernmae and Password on Login Page
 		new Login_Page(driver).usernameAs("admin").passwordAs("admin123")
 				.submit();
+		test.log(Status.INFO, "Login Successfull");
 		// Click on Menu icon
 		new Credential_Page(driver).menu();
 		// Click on 'Administration' module from Menu
@@ -42,7 +47,14 @@ public class Credentials extends Start {
 		// Click on Submit button
 		new Credential_Page(driver).Submit();
 
+		test.log(Status.PASS, "Test Case Executed Successfully");
+
 	}
+
+	/*
+	 * The menthod teardown will execute after each method present in class. The
+	 * method contains the Screenshot capture logic if test case get Failed.
+	 */
 
 	@AfterMethod
 	public void tearDown(ITestResult result) throws IOException {
@@ -51,6 +63,8 @@ public class Credentials extends Start {
 		// condition
 		if (result.getStatus() == ITestResult.FAILURE) {
 
+			test.log(Status.FAIL,
+					"Test Case Failed, Please check the screenshot");
 			String screenShotPath = Utility.captureScreenshot(driver,
 					"screenshotName");
 			test.fail("Snapshot below: "

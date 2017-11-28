@@ -1,63 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test name="Test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="Demo.Add_Provider">
+      <class name="module.Backend_Config">
         <methods>
-          <include name="tearDown"/>
-          <include name="Provider"/>
-          <include name="tearDown"/>
-          <include name="setupApplication"/>
           <include name="generate"/>
-          <include name="getResult"/>
-          <include name="closeApplication"/>
-        </methods>
-      </class> <!-- Demo.Add_Provider -->
-      <class name="Demo.Credentials">
-        <methods>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="cred"/>
-          <include name="setupApplication"/>
-          <include name="generate"/>
-          <include name="getResult"/>
-          <include name="closeApplication"/>
-        </methods>
-      </class> <!-- Demo.Credentials -->
-      <class name="Demo.Backend_Job">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setupApplication"/>
-          <include name="generate"/>
-          <include name="job"/>
-          <include name="getResult"/>
-          <include name="tearDown"/>
-          <include name="closeApplication"/>
-        </methods>
-      </class> <!-- Demo.Backend_Job -->
-      <class name="Login_Process.Login">
-        <methods>
+          <include name="Backend_Configuration"/>
           <include name="tearDown"/>
           <include name="tearDown"/>
           <include name="setupApplication"/>
-          <include name="generate"/>
-          <include name="signin"/>
-          <include name="getResult"/>
           <include name="closeApplication"/>
-        </methods>
-      </class> <!-- Login_Process.Login -->
-      <class name="Demo.Custom_Actions">
-        <methods>
-          <include name="create_custom_action"/>
-          <include name="tearDown"/>
-          <include name="setupApplication"/>
-          <include name="generate"/>
-          <include name="tearDown"/>
           <include name="getResult"/>
-          <include name="closeApplication"/>
         </methods>
-      </class> <!-- Demo.Custom_Actions -->
+      </class> <!-- module.Backend_Config -->
     </classes>
-  </test> <!-- Test(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
