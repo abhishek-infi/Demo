@@ -5,24 +5,24 @@ import module.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Login_Page extends Start {
+public class LoginPage extends Start {
 
 	WebDriver driver;
 
 	By username = By.id("username");
 	By password = By.id("password");
-	By Submit_Button = By.id("submit");
+	By Submit_Button = By.id("submitButton");
 
-	public Login_Page(WebDriver driver) {
+	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public Login_Page usernameAs(String uname) {
+	public LoginPage usernameAs(String uname) {
 		driver.findElement(username).sendKeys(uname);
 		return this;
 	}
 
-	public Login_Page passwordAs(String pass) {
+	public LoginPage passwordAs(String pass) {
 		driver.findElement(password).sendKeys(pass);
 		return this;
 	}

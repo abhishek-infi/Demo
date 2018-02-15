@@ -42,9 +42,19 @@ public class Start {
 		driver.manage().window().maximize();
 		driver.get("http://opshub.flintcloud.info");
 
+		// This Part is a Driver Initialization for Headless Google Chrome.
+
+		/*
+		 * ChromeOptions options = new ChromeOptions();
+		 * options.addArguments("headless");
+		 * options.addArguments("window-size=1200x600");
+		 * 
+		 * WebDriver driver = new ChromeDriver(options);
+		 * driver.get("http://opshub.flintcloud.info");
+		 */
 	}
 
-	// Code Starts here to Generate the Extent HTML Report
+	// Code to Generate the Extent HTML Report
 
 	@AfterClass
 	public void closeApplication() {

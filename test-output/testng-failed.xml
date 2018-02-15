@@ -3,17 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="module.Backend_Config">
+      <class name="module.EditProvider">
         <methods>
           <include name="generate"/>
-          <include name="Backend_Configuration"/>
-          <include name="tearDown"/>
           <include name="tearDown"/>
           <include name="setupApplication"/>
           <include name="closeApplication"/>
+          <include name="UpdateProvider"/>
+          <include name="tearDown"/>
           <include name="getResult"/>
         </methods>
-      </class> <!-- module.Backend_Config -->
+      </class> <!-- module.EditProvider -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

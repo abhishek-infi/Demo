@@ -16,7 +16,7 @@ public class Utility {
 
 		File source = ts.getScreenshotAs(OutputType.FILE);
 
-		// FileUtils.copyFile(source, new File("D://Screen"));
+		FileUtils.copyFile(source, new File("D://Screen"));
 
 		String destination = System.getProperty("user.dir") + "/Screenshot/"
 				+ screenshotName + ".png";

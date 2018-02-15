@@ -1,6 +1,8 @@
 package module;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.naming.ldap.ExtendedRequest;
 
@@ -10,51 +12,67 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import page_object.Backend_Job_Page;
-import page_object.Login_Page;
+import page_object.BackendJobPage;
+import page_object.LoginPage;
 
 import com.aventstack.extentreports.ExtentReporter;
 import com.aventstack.extentreports.Status;
 
-public class Backend_Job extends Start {
+public class BackendJob extends Start {
 
 	ExtentReporter report;
 	ExtendedRequest logger;
 
 	@Test
-	public void job() throws InterruptedException {
+	public void job() throws InterruptedException, IOException {
 
 		test = extent.createTest("job");
 
+		// Property file object
+		Properties obj = new Properties();
+
+		FileInputStream objFile = new FileInputStream(
+				System.getProperty("user.dir") + "/DataFile.Properties/");
+
+		obj.load(objFile);
+
 		test.log(Status.INFO, "Let's Login to Portal");
 		// Login to Portal
-		new Login_Page(driver).usernameAs("admin").passwordAs("admin123")
-				.submit();
+		new LoginPage(driver).usernameAs(obj.getProperty("username"))
+				.passwordAs(obj.getProperty("password")).submit();
 
 		test.log(Status.INFO, "Login Successfull");
 
 		// Click on Menu
-		new Backend_Job_Page(driver).Menu();
+		new BackendJobPage(driver).Menu();
+
 		// Click on Asministration Module
-		new Backend_Job_Page(driver).Administration();
+		new BackendJobPage(driver).Administration();
+
 		// Click on "Backend Jobs" option.
-		new Backend_Job_Page(driver).Backendjob();
+		new BackendJobPage(driver).Backendjob();
+
 		// Click on 'Create New' button.
-		new Backend_Job_Page(driver).CreateNew();
+		new BackendJobPage(driver).CreateNew();
+
 		// Enter Name for Job
-		new Backend_Job_Page(driver).nameAs("Testing");
+		new BackendJobPage(driver).nameAs("Testing");
+
 		// Enter Description of Job
-		new Backend_Job_Page(driver).descriptionAs("New Backend Job");
+		new BackendJobPage(driver).descriptionAs("New Backend Job");
+
 		// Enter Cron Expression
-		new Backend_Job_Page(driver).cronAs("0 0/1 * 1/1 * ? *");
+		new BackendJobPage(driver).cronAs("0 0/1 * 1/1 * ? *");
+
 		// Select TimeZone
-		new Backend_Job_Page(driver).timezon();
+		new BackendJobPage(driver).timezon();
+
 		// Enter Flintbit
-		new Backend_Job_Page(driver).triggerAs("hello:example.rb");
+		new BackendJobPage(driver).triggerAs("hello:example.rb");
 
 		// new Backend_Job_Pages(driver).jsonAs("");
 		// Click on Submit button
-		new Backend_Job_Page(driver).Submit();
+		new BackendJobPage(driver).Submit();
 		// If Backend Job Created Successfully then Print the message
 
 		test.log(Status.INFO, "Backend Job Created Successfully");

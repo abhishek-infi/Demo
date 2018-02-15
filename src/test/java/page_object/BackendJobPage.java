@@ -5,7 +5,7 @@ import module.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Backend_Job_Page extends Start {
+public class BackendJobPage extends Start {
 
 	By Menu = By.xpath(".//*[@id='step1']/a/em");
 	By Administration = By.xpath(".//*[@id='step2']/span[2]/span/strong");
@@ -23,7 +23,7 @@ public class Backend_Job_Page extends Start {
 	 */
 	By Submit = By.id("submitButtonOfSchedules");
 
-	public Backend_Job_Page(WebDriver driver) throws InterruptedException {
+	public BackendJobPage(WebDriver driver) throws InterruptedException {
 
 		Start.driver = driver;
 
@@ -48,20 +48,20 @@ public class Backend_Job_Page extends Start {
 		driver.findElement(CreateNew).click();
 	}
 
-	public Backend_Job_Page nameAs(String name) throws InterruptedException {
+	public BackendJobPage nameAs(String name) throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Name).sendKeys(name);
 		return this;
 	}
 
-	public Backend_Job_Page descriptionAs(String descrip)
+	public BackendJobPage descriptionAs(String descrip)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Description).sendKeys(descrip);
 		return this;
 	}
 
-	public Backend_Job_Page cronAs(String cron) throws InterruptedException {
+	public BackendJobPage cronAs(String cron) throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Cron).sendKeys(cron);
 		return this;
@@ -72,7 +72,7 @@ public class Backend_Job_Page extends Start {
 		driver.findElement(Timezon).click();
 	}
 
-	public Backend_Job_Page triggerAs(String trigger)
+	public BackendJobPage triggerAs(String trigger)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Trigger).sendKeys(trigger);

@@ -5,7 +5,7 @@ import module.Start;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Custom_Actions_Page extends Start {
+public class CustomActionsPage extends Start {
 
 	WebDriver driver;
 
@@ -22,7 +22,7 @@ public class Custom_Actions_Page extends Start {
 	By submit_butto = By.id("submit_action");
 	By save = By.id("update_action_button");
 
-	public Custom_Actions_Page(WebDriver driver) {
+	public CustomActionsPage(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -47,12 +47,12 @@ public class Custom_Actions_Page extends Start {
 
 	}
 
-	public Custom_Actions_Page nameAs(String Name) {
+	public CustomActionsPage nameAs(String Name) {
 		driver.findElement(name).sendKeys(Name);
 		return this;
 	}
 
-	public Custom_Actions_Page descriptionAs(String descri) {
+	public CustomActionsPage descriptionAs(String descri) {
 		driver.findElement(description).sendKeys(descri);
 		return this;
 	}
@@ -72,7 +72,7 @@ public class Custom_Actions_Page extends Start {
 
 	}
 
-	public Custom_Actions_Page flintnameAs(String Flintname) {
+	public CustomActionsPage flintnameAs(String Flintname) {
 		driver.findElement(flintname).sendKeys(Flintname);
 		return this;
 

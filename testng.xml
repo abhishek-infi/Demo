@@ -3,11 +3,13 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-      <class name="Login_Process.Login"/>
-      <class name="Demo.Credentials"/>
-       <class name="Demo.Custom_Actions"/>
-      <class name="Demo.Add_Provider"/>
-      <class name="Demo.Backend_Job"/>
+      <class name="module.Credentials"/>
+      <class name="module.Start"/>
+      <class name="module.Backend_Job"/>
+      <class name="module.Add_Provider"/>
+      <class name="module.Backend_Config"/>
+      <class name="module.Login"/>
+      <class name="module.Custom_Actions"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

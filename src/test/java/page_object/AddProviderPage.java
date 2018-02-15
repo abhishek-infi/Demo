@@ -1,5 +1,6 @@
 package page_object;
 
+import junit.framework.Assert;
 import module.Start;
 
 import org.openqa.selenium.By;
@@ -8,7 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Add_Provider_Page extends Start {
+import com.aventstack.extentreports.Status;
+
+public class AddProviderPage extends Start {
 
 	By Menu = By.xpath(".//*[@id='step1']/a/em");
 	By Administration = By.xpath(".//*[@id='step2']/span[2]/span/strong");
@@ -25,10 +28,9 @@ public class Add_Provider_Page extends Start {
 	By Register_button = By
 			.xpath(".//*[@id='vmwareForm']/div[4]/div[2]/button[1]");
 
-	public Add_Provider_Page(WebDriver driver) throws InterruptedException {
+	public AddProviderPage(WebDriver driver) throws InterruptedException {
 
 		Start.driver = driver;
-
 	}
 
 	public void Menu() {
@@ -45,6 +47,13 @@ public class Add_Provider_Page extends Start {
 		Thread.sleep(500);
 		driver.findElement(Provider).click();
 
+		// Verify Whether the Page Navigates to 'Platform Config' Page after
+		// clicking on 'Administration' For this Assert is added on Save button.
+		WebElement Save = driver.findElement(By.id("createProvider"));
+		Assert.assertEquals(true, Save.isDisplayed());
+		test.log(Status.INFO,
+				"Verified The Page, You are in 'Administration' Module.");
+
 	}
 
 	public void Create_New() throws InterruptedException {
@@ -59,37 +68,35 @@ public class Add_Provider_Page extends Start {
 
 	}
 
-	public Add_Provider_Page ProvidernameAs(String pname)
+	public AddProviderPage ProvidernameAs(String pname)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Provider_name).sendKeys(pname);
 		return this;
 	}
 
-	public Add_Provider_Page DescriptionAs(String description)
+	public AddProviderPage DescriptionAs(String desc)
 			throws InterruptedException {
 		Thread.sleep(500);
-		driver.findElement(Description).sendKeys(description);
+		driver.findElement(Description).sendKeys(desc);
 		return this;
 	}
 
-	public Add_Provider_Page hostnameAs(String host)
-			throws InterruptedException {
+	public AddProviderPage hostnameAs(String host) throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(hostname).sendKeys(host);
 		return this;
 	}
 
-	public Add_Provider_Page usernameAs(String username)
+	public AddProviderPage usernameAs(String username)
 			throws InterruptedException {
 		Thread.sleep(500);
 		driver.findElement(Username).sendKeys(username);
 		return this;
 	}
 
-	public Add_Provider_Page PasswordAs(String pass)
-			throws InterruptedException {
-		Thread.sleep(500);
+	public AddProviderPage PasswordAs(String pass) throws InterruptedException {
+
 		WebElement element = null;
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		element = wait.until(ExpectedConditions

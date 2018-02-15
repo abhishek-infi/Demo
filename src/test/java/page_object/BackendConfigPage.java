@@ -3,7 +3,7 @@ package page_object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Backend_Config_Page {
+public class BackendConfigPage {
 	WebDriver driver;
 
 	By Menu = By.xpath(".//*[@id='step1']/a/em");
@@ -15,40 +15,40 @@ public class Backend_Config_Page {
 	By Config = By.xpath("//*[@id='editor-config']");
 	By Submit = By.xpath("//*[@id='configuration']/div[4]/div/div/button/b");
 
-	public Backend_Config_Page(WebDriver driver) {
+	public BackendConfigPage(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public Backend_Config_Page Menu() {
+	public BackendConfigPage Menu() {
 		driver.findElement(Menu).click();
 		return this;
 
 	}
 
-	public Backend_Config_Page Administration() {
+	public BackendConfigPage Administration() {
 		driver.findElement(Administration).click();
 		return this;
 
 	}
 
-	public Backend_Config_Page Backend_Config() {
+	public BackendConfigPage Backend_Config() {
 		driver.findElement(Backend_Config).click();
 		return this;
 
 	}
 
-	public Backend_Config_Page Create_New() {
+	public BackendConfigPage Create_New() {
 		driver.findElement(Create_New).click();
 		return this;
 
 	}
 
-	public Backend_Config_Page NameAs(String name) {
+	public BackendConfigPage NameAs(String name) {
 		driver.findElement(Name).sendKeys(name);
 		return this;
 	}
 
-	public Backend_Config_Page DescriptionAs(String Descr) {
+	public BackendConfigPage DescriptionAs(String Descr) {
 		driver.findElement(Description).sendKeys(Descr);
 		return this;
 	}
@@ -58,7 +58,7 @@ public class Backend_Config_Page {
 	 * driver.findElement(Config).sendKeys(json); return this; }
 	 */
 
-	public Backend_Config_Page Submit() {
+	public BackendConfigPage Submit() {
 		driver.findElement(Submit).click();
 		return this;
 

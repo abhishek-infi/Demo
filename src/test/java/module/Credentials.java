@@ -1,6 +1,8 @@
 package module;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 import library.Utility;
 
@@ -8,8 +10,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import page_object.Credential_Page;
-import page_object.Login_Page;
+import page_object.CredentialPage;
+import page_object.LoginPage;
 
 import com.aventstack.extentreports.Status;
 
@@ -22,30 +24,49 @@ public class Credentials extends Start {
 
 		test.log(Status.INFO, "Let's Login to Portal");
 
+		// Property file object
+		Properties obj = new Properties();
+
+		FileInputStream objFile = new FileInputStream(
+				System.getProperty("user.dir") + "/DataFile.Properties/");
+
+		obj.load(objFile);
+
 		// Enter the Usernmae and Password on Login Page
-		new Login_Page(driver).usernameAs("admin").passwordAs("admin123")
-				.submit();
+		new LoginPage(driver).usernameAs(obj.getProperty("username"))
+				.passwordAs("password").submit();
+
 		test.log(Status.INFO, "Login Successfull");
+
 		// Click on Menu icon
-		new Credential_Page(driver).menu();
+		new CredentialPage(driver).menu();
+
 		// Click on 'Administration' module from Menu
-		new Credential_Page(driver).administration();
+		new CredentialPage(driver).administration();
+
 		// Click on 'Credentials' option
-		new Credential_Page(driver).credential();
+		new CredentialPage(driver).credential();
+
 		// Clickk on 'Create New' button
-		new Credential_Page(driver).create_new();
+		new CredentialPage(driver).create_new();
+
 		// Select Type of Credentials
-		new Credential_Page(driver).type();
+		new CredentialPage(driver).type();
+
 		// Click on 'Username & Password' option
-		new Credential_Page(driver).nameAs("Credential");
+		new CredentialPage(driver).nameAs("Credential");
+
 		// Enter Description
-		new Credential_Page(driver).DescriptionAs("Creaet Credential");
+		new CredentialPage(driver).DescriptionAs("Creaet Credential");
+
 		// Enter Username
-		new Credential_Page(driver).usernameAs("Admin");
+		new CredentialPage(driver).usernameAs("Admin");
+
 		// Enter Password
-		new Credential_Page(driver).PasswordAs("Admin123");
+		new CredentialPage(driver).PasswordAs("Admin123");
+
 		// Click on Submit button
-		new Credential_Page(driver).Submit();
+		new CredentialPage(driver).Submit();
 
 		test.log(Status.PASS, "Test Case Executed Successfully");
 
